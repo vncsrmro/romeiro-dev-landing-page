@@ -63,14 +63,13 @@ export function Solution() {
                         </div>
                     </div>
 
-                    <div className="lg:w-1/2 relative">
+                    <div className="hidden lg:block lg:w-1/2 relative">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="relative z-10"
-                        >
-                            <div className="aspect-square rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl absolute inset-0 animate-pulse" />
+                            className="relative z-10">
+                            <div className="aspect-square rounded- bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl absolute inset-0 animate-pulse" />
                             <div className="glass-panel p-8 rounded-2xl border border-white/10 relative z-10 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <div className="space-y-4">
                                     <div className="h-8 w-3/4 bg-white/10 rounded animate-pulse" />
@@ -79,8 +78,8 @@ export function Solution() {
                                     <div className="h-40 w-full bg-white/5 rounded mt-8 animate-pulse delay-200" />
                                 </div>
 
-                                <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center shadow-lg shadow-secondary/50 animate-bounce">
-                                    <span className="text-2xl font-bold text-white">100%</span>
+                                <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary rounded-full flex items-center justify-center shadow-lg shadow-secondary/50">
+                                    <span className="text-xl font-bold text-white">100%</span>
                                 </div>
                             </div>
                         </motion.div>
