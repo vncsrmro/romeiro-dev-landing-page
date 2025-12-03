@@ -43,7 +43,7 @@ export function Header() {
                     <img
                         src="/logo.png"
                         alt="INOVASYS"
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain brightness-0 invert"
                     />
                 </Link>
 
