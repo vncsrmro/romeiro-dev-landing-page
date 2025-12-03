@@ -138,7 +138,7 @@ export function Pricing() {
 
                             <div className="mt-auto">
                                 <Link
-                                    href={SITE_CONFIG.whatsapp}
+                                    href={`https://wa.me/5519960003434?text=${encodeURIComponent(`Olá! Gostaria de mais informações sobre o plano ${pkg.title}...`)}`}
                                     target="_blank"
                                     className={cn(
                                         "w-full py-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center gap-2",
