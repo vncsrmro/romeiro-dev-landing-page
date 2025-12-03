@@ -8,16 +8,13 @@ export function Footer() {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col items-center md:items-start">
-                        <div className="relative w-32 h-8 mb-4">
+                        <div className="relative w-48 h-12 mb-4">
                             <img
                                 src="/logo.png"
                                 alt="INOVASYS"
-                                className="w-full h-full object-contain"
+                                className="w-full h-full object-contain brightness-0 invert"
                             />
                         </div>
-                        <p className="text-sm text-gray-400 max-w-xs">
-                            Soluções que transformam o seu negócio.
-                        </p>
                     </div>
 
                     <div className="flex items-center gap-6">
