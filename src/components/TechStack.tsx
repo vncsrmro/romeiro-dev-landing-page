@@ -1,17 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Database, Globe, Layers, Layout, Server, Zap } from "lucide-react";
+import {
+    NextJsIcon,
+    ReactIcon,
+    TailwindIcon,
+    TypeScriptIcon,
+    NodeJsIcon,
+    SupabaseIcon,
+    PrismaIcon,
+    VercelIcon
+} from "./TechIcons";
 
 const technologies = [
-    { name: "Next.js", icon: Globe },
-    { name: "React", icon: Code2 },
-    { name: "Tailwind CSS", icon: Layout },
-    { name: "TypeScript", icon: Code2 },
-    { name: "Node.js", icon: Server },
-    { name: "Supabase", icon: Database },
-    { name: "Prisma", icon: Layers },
-    { name: "Vercel", icon: Zap },
+    { name: "Next.js", icon: NextJsIcon },
+    { name: "React", icon: ReactIcon },
+    { name: "Tailwind CSS", icon: TailwindIcon },
+    { name: "TypeScript", icon: TypeScriptIcon },
+    { name: "Node.js", icon: NodeJsIcon },
+    { name: "Supabase", icon: SupabaseIcon },
+    { name: "Prisma", icon: PrismaIcon },
+    { name: "Vercel", icon: VercelIcon },
 ];
 
 export function TechStack() {
