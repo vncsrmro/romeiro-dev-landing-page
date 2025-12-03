@@ -84,7 +84,7 @@ export function Header() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="md:hidden absolute top-full left-0 right-0 glass-panel border-t border-white/10 p-4"
+                    className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/98 backdrop-blur-xl border-t border-white/20 p-6 shadow-2xl"
                 >
                     <nav className="flex flex-col space-y-4">
                         {navItems.map((item) => (

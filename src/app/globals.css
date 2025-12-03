@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
+  --background: #0a0f1a;
   --foreground: #f9fafb;
 
   /* Custom Colors */
@@ -12,7 +12,7 @@
 
 @theme {
   --font-sans: var(--font-sans);
-  --color-background: #030303;
+  --color-background: #0a0f1a;
   --color-foreground: #ffffff;
   --color-primary: #3b82f6;
   /* Electric Blue */
@@ -101,7 +101,7 @@ body {
   .glass-panel {
     backdrop-filter: blur(8px);
   }
-  
+
   .glass-card-strong {
     backdrop-filter: blur(12px);
   }

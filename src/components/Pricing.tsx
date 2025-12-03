@@ -86,7 +86,7 @@ export function Pricing() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8 max-w-7xl mx-auto">
                     {packages.map((pkg, index) => (
                         <motion.div
                             key={index}
@@ -95,10 +95,10 @@ export function Pricing() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             className={cn(
-                                "relative flex flex-col p-8 rounded-3xl border transition-all duration-300 group",
+                                "relative flex flex-col p-6 md:p-8 rounded-2xl md:rounded-3xl border transition-all duration-300 group",
                                 pkg.highlight
-                                    ? "bg-[#050a15] border-blue-500/50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.2)] scale-105 z-10"
-                                    : "bg-[#050505] border-white/5 hover:border-white/10 hover:bg-[#0a0a0a]"
+                                    ? "bg-[#0a1628] border-blue-500/50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.2)] md:scale-105 z-10"
+                                    : "bg-[#0f1419] border-white/10 hover:border-white/20 hover:bg-[#141b23]"
                             )}
                             whileHover={{ y: -5 }}
                         >
