@@ -1,0 +1,64 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Code2, Database, Globe, Layers, Layout, Server, Smartphone, Zap } from "lucide-react";
+
+const technologies = [
+    { name: "Next.js", icon: Globe },
+    { name: "React", icon: Code2 },
+    { name: "Tailwind CSS", icon: Layout },
+    { name: "TypeScript", icon: Code2 },
+    { name: "Node.js", icon: Server },
+    { name: "Supabase", icon: Database },
+    { name: "Prisma", icon: Layers },
+    { name: "Vercel", icon: Zap },
+];
+
+export function TechStack() {
+    return (
+        <section id="stack" className="py-24 bg-white/5 relative overflow-hidden">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl md:text-5xl font-bold mb-6"
+                    >
+                        Tecnologias que <span className="text-primary">Elevam</span> seu Negócio.
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl text-gray-400 max-w-2xl mx-auto"
+                    >
+                        Utilizo as ferramentas mais modernas e robustas do mercado para garantir projetos rápidos, seguros e escaláveis.
+                    </motion.p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {technologies.map((tech, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+                                className="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-4 hover:bg-white/10 transition-colors"
+                            >
+                                <tech.icon className="w-10 h-10 text-primary" />
+                                <span className="font-bold text-lg">{tech.name}</span>
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
