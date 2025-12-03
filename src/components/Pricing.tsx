@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Check, Rocket, Zap, Shield } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { cn } from "@/lib/utils";
 
 const packages = [
     {
