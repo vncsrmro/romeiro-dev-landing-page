@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
     NextJsIcon,
@@ -24,8 +25,17 @@ const technologies = [
 ];
 
 export function TechStack() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
-        <section id="stack" className="py-24 bg-white/5 relative overflow-hidden">
+        <section id="stack" className="py-24 bg-white/5 relative overflow-hidden gpu-accelerated">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <motion.h2
@@ -57,9 +67,9 @@ export function TechStack() {
                             transition={{ delay: index * 0.1 }}
                         >
                             <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-                                className="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-4 hover:bg-white/10 transition-colors"
+                                animate={isMobile ? {} : { y: [0, -10, 0] }}
+                                transition={isMobile ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+                                className="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-4 hover:bg-white/10 transition-colors gpu-accelerated"
                             >
                                 <tech.icon className="w-10 h-10 text-primary" />
                                 <span className="font-bold text-lg">{tech.name}</span>

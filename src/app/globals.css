@@ -29,10 +29,14 @@
 
   .glass-panel {
     @apply bg-white/5 backdrop-blur-md border border-white/10;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .glass-card-strong {
     @apply bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-all duration-300;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .text-gradient-bold {
@@ -42,38 +46,63 @@
   .text-gradient-primary {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
+
+  /* Performance optimizations */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @keyframes marquee {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
   }
 
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-100%) translateZ(0);
   }
 }
 
 @keyframes marquee2 {
   0% {
-    transform: translateX(100%);
+    transform: translateX(100%) translateZ(0);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
   }
 }
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee2 {
   animation: marquee2 25s linear infinite;
+  will-change: transform;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   overflow-x: hidden;
+}
+
+/* Reduce backdrop blur on mobile for better performance */
+@media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: blur(8px);
+  }
+  
+  .glass-card-strong {
+    backdrop-filter: blur(12px);
+  }
 }

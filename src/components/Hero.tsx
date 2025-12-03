@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -7,14 +8,27 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
     const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    // Reduced parallax ranges for better performance
+    const y1 = useTransform(scrollY, [0, 300], [0, 100]);
+    const y2 = useTransform(scrollY, [0, 300], [0, -75]);
+    const opacity = useTransform(scrollY, [0, 200], [1, 0]);
+
+    // Disable parallax on mobile for better performance
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const parallaxProps = isMobile ? {} : { y: y1, opacity };
 
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 gpu-accelerated">
             {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none gpu-accelerated">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-1000" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
@@ -25,7 +39,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{ y: y1, opacity }}
+                    style={parallaxProps}
                     className="flex flex-col items-center"
                 >
                     <motion.div

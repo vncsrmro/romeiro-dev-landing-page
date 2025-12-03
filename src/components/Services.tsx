@@ -106,14 +106,14 @@ export function Services() {
                             onClick={() => setExpandedId(expandedId === service.id ? null : service.id)}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ layout: { duration: 0.3, type: "spring" } }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ layout: { duration: 0.2, type: "tween" } }}
                             className={cn(
-                                "group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] cursor-pointer transition-colors duration-500",
+                                "group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] cursor-pointer transition-colors duration-300 gpu-accelerated",
                                 service.className,
                                 expandedId === service.id ? "md:col-span-3 row-span-2 bg-[#0f0f0f] border-cyan-500/30" : "hover:border-cyan-500/50 hover:shadow-[0_0_30px_-10px_rgba(0,255,255,0.15)]"
                             )}
-                            whileHover={expandedId !== service.id ? { y: -5 } : {}}
+                            whileHover={expandedId !== service.id ? { y: -5, transition: { duration: 0.2 } } : {}}
                         >
                             <div className={cn(
                                 "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500",
