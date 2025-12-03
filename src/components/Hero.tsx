@@ -23,12 +23,12 @@ export function Hero() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const parallaxProps = isMobile ? {} : { y: y1, opacity };
+    const parallaxProps = isMobile ? { opacity: 1, y: 0 } : { y: y1, opacity };
 
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 gpu-accelerated">
+        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none gpu-accelerated">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-1000" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
