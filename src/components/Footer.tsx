@@ -7,9 +7,15 @@ export function Footer() {
         <footer className="bg-background border-t border-white/10 py-12">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="text-center md:text-left">
-                        <h3 className="text-xl font-bold tracking-tighter">INOVASYS</h3>
-                        <p className="text-sm text-gray-400 mt-2">
+                    <div className="flex flex-col items-center md:items-start">
+                        <div className="relative w-32 h-8 mb-4">
+                            <img
+                                src="/logo.png"
+                                alt="INOVASYS"
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+                        <p className="text-sm text-gray-400 max-w-xs">
                             Soluções que transformam o seu negócio.
                         </p>
                     </div>
