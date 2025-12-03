@@ -1,11 +1,12 @@
 export const SITE_CONFIG = {
-    name: "ROMEIRO.DEV",
-    description: "Sistemas e Sites Antigravidade",
-    whatsapp: "https://wa.me/5511999999999", // Replace with actual number
-    email: "mailto:contato@romeiro.dev",
+    name: "INOVASYS",
+    description: "Soluções digitais de alta performance para o seu negócio.",
+    url: "https://inovasys.com.br",
+    ogImage: "https://inovasys.com.br/og.jpg",
     links: {
-        github: "https://github.com/vncsrmro",
-        linkedin: "https://linkedin.com/in/viniciusromeiro",
-        twitter: "https://twitter.com/romeirodev",
+        twitter: "https://twitter.com/inovasys",
+        github: "https://github.com/inovasys",
     },
+    whatsapp: "https://wa.me/5519960003434",
+    email: "mailto:contato@inovasys.com.br"
 };

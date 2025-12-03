@@ -10,8 +10,8 @@ const fontSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ROMEIRO.DEV | Sistemas e Sites Antigravidade",
-  description: "Desenvolvimento de software de alta performance, sites modernos e sistemas web sob medida.",
+  title: "INOVASYS | Soluções Digitais de Alta Performance",
+  description: "Transformamos ideias em experiências digitais que desafiam a gravidade.",
 };
 
 export default function RootLayout({

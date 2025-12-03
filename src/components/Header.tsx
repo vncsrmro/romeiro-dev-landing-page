@@ -38,8 +38,13 @@ export function Header() {
             )}
         >
             <div className="container mx-auto px-4 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold tracking-tighter group">
-                    ROMEIRO<span className="text-sm font-normal text-primary group-hover:text-secondary transition-colors">.DEV</span>
+                <Link href="/" className="relative w-40 h-10">
+                    {/* Using CSS filter to ensure logo is white if it's not already */}
+                    <img
+                        src="/logo.png"
+                        alt="INOVASYS"
+                        className="w-full h-full object-contain brightness-0 invert"
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

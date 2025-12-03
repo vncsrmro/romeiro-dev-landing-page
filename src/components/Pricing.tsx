@@ -4,66 +4,66 @@ import { motion } from "framer-motion";
 import { Check, Rocket, Zap, Shield } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SITE_CONFIG } from "@/lib/constants";
 
 const packages = [
     {
-        title: "Landing Boost",
-        subtitle: "Aceleração Inicial",
-        focus: "Cartão Digital e Geração de Leads",
-        idealFor: "Profissionais Liberais, Pequenos Serviços e Autônomos.",
+        title: "PAC Essencial",
+        subtitle: "O Cartão de Visita Digital de Alta Conversão",
+        focus: "Ideal para: Autônomos, Freelancers, Pequenos Serviços.",
         features: [
-            "Página Única de Alto Tráfego",
-            "Formulário de Captação de Contato",
-            "Otimização de Velocidade (Core Web Vitals)",
-            "Hospedagem Premium Vercel (Inclusa)",
-            "Suporte Técnico Padrão"
+            "Site One-Page (Ultra-Rápido e responsivo)",
+            "Chamada Flutuante para WhatsApp",
+            "Integração com Google Maps",
+            "Hospedagem de Performance (Inclusa)",
+            "Atualizações de Conteúdo (Mensais)"
         ],
         price: {
-            setup: "R$ 250,00",
-            monthly: "R$ 119,90"
+            monthly: "R$ 99",
+            period: "/mês",
+            setup: "Implantação Gratuita"
         },
-        cta: "Quero Lançar Agora!",
+        cta: "Quero Decolar 🚀",
         highlight: false,
         icon: Rocket
     },
     {
-        title: "Autoridade Pro",
-        subtitle: "Recomendado",
-        focus: "Site Completo e Fortalecimento de Marca",
-        idealFor: "Clínicas, Empresas Locais e Consultorias.",
+        title: "PAC Profissional",
+        subtitle: "Transmita Autoridade e Posicione-se no Google",
+        focus: "Ideal para: Clínicas, Consultorias, Empresas Locais e Médias.",
         features: [
-            "Tudo do pacote anterior",
-            "Até 7 Páginas (Serviços, Equipe, Blog, etc.)",
-            "SEO Estratégico e Indexação Imediata",
-            "Painel de Notícias / Artigos",
-            "E-mails Corporativos Ilimitados",
-            "Consultoria de UX/UI Inicial"
+            "Tudo do Essencial +",
+            "Até 5 Seções/Páginas (Home, Serviços, Sobre, Blog)",
+            "Otimização para Mecanismos de Busca (SEO Base)",
+            "Área de Conteúdo (Blog/Notícias) Gerenciável",
+            "Contas de E-mail Personalizadas",
+            "Suporte Técnico Prioritário"
         ],
         price: {
-            setup: "R$ 550,00",
-            monthly: "R$ 249,90"
+            monthly: "R$ 199",
+            period: "/mês",
+            setup: "Implantação Gratuita"
         },
-        cta: "Elevar Minha Marca",
+        cta: "Quero Decolar 🚀",
         highlight: true,
         icon: Zap
     },
     {
-        title: "Enterprise Custom",
-        subtitle: "Sob Medida",
-        focus: "Sistemas Web, Dashboards e Soluções SaaS",
-        idealFor: "Startups, Gestão de Estoque e Soluções Empresariais.",
+        title: "PAC Customizado",
+        subtitle: "Sistemas Antigravidade: Controle Total da sua Operação",
+        focus: "Ideal para: Startups, Gestão Interna Complexa, Soluções SaaS.",
         features: [
-            "Plataforma de Login e Permissões de Usuário",
-            "Dashboard Interativo com Dados em Tempo Real",
-            "Integração com API's e Serviços Externos",
-            "Banco de Dados Supabase/PostgreSQL Dedicado",
-            "SLA de Suporte Prioritário"
+            "Desenvolvimento de Sistemas Sob Medida (Web Apps)",
+            "Painel Administrativo (Dashboard) com Gráficos",
+            "Gestão de Níveis de Acesso e Usuários",
+            "Banco de Dados Seguro e Escalável"
         ],
         price: {
-            setup: "A partir de R$ 1.500,00",
-            monthly: "Sob Consulta"
+            monthly: "Sob Consulta",
+            period: "",
+            setup: "A partir de R$ 1.500,00 (desenvolvimento único)"
         },
-        cta: "Agendar Diagnóstico",
+        cta: "Quero Decolar 🚀",
         highlight: false,
         icon: Shield
     }
@@ -98,57 +98,53 @@ export function Pricing() {
                             className={cn(
                                 "relative flex flex-col p-8 rounded-3xl border transition-all duration-300 group",
                                 pkg.highlight
-                                    ? "bg-[#181818] border-cyan-500/30 shadow-[0_0_30px_-10px_rgba(0,255,255,0.15)] scale-105 z-10"
-                                    : "bg-[#121212] border-white/5 hover:border-white/10 hover:bg-[#151515]"
+                                    ? "bg-[#050a15] border-blue-500/50 shadow-[0_0_40px_-10px_rgba(59,130,246,0.2)] scale-105 z-10"
+                                    : "bg-[#050505] border-white/5 hover:border-white/10 hover:bg-[#0a0a0a]"
                             )}
-                            whileHover={{ y: -5, boxShadow: pkg.highlight ? "0 0 40px -10px rgba(0,255,255,0.3)" : "0 10px 30px -10px rgba(0,0,0,0.5)" }}
+                            whileHover={{ y: -5 }}
                         >
                             {pkg.highlight && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-cyan-500 text-black text-xs font-bold uppercase tracking-wider">
-                                    Recomendado
+                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-blue-600/20">
+                                    Mais Popular
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <div className={cn(
-                                    "w-12 h-12 rounded-xl flex items-center justify-center mb-6",
-                                    pkg.highlight ? "bg-cyan-500/10 text-cyan-500" : "bg-white/5 text-gray-400"
-                                )}>
-                                    <pkg.icon className="w-6 h-6" />
-                                </div>
                                 <h3 className="text-2xl font-bold text-white mb-2">{pkg.title}</h3>
-                                <p className="text-sm text-cyan-500 font-medium mb-4 uppercase tracking-wide">{pkg.subtitle}</p>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-4">{pkg.focus}</p>
-                                <p className="text-xs text-gray-500 italic">Ideal para: {pkg.idealFor}</p>
+                                <p className="text-blue-400 text-sm font-medium mb-4 min-h-[40px]">{pkg.subtitle}</p>
+                                <p className="text-gray-500 text-xs mb-6">{pkg.focus}</p>
+
+                                <div className="mb-2">
+                                    <span className="text-5xl font-bold text-white tracking-tight">{pkg.price.monthly}</span>
+                                    <span className="text-gray-400 text-lg ml-1">{pkg.price.period}</span>
+                                </div>
+                                <p className={cn("text-sm font-medium", pkg.highlight ? "text-green-400" : "text-green-500")}>
+                                    ✓ {pkg.price.setup}
+                                </p>
                             </div>
 
-                            <div className="flex-grow mb-8">
+                            <div className="flex-grow mb-8 border-t border-white/5 pt-8">
                                 <ul className="space-y-4">
                                     {pkg.features.map((feature, i) => (
                                         <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                            <Check className={cn("w-5 h-5 flex-shrink-0", pkg.highlight ? "text-cyan-500" : "text-gray-500")} />
+                                            <div className={cn("mt-0.5 rounded-full p-0.5", pkg.highlight ? "bg-blue-500/20 text-blue-400" : "bg-white/10 text-gray-400")}>
+                                                <Check className="w-3 h-3" />
+                                            </div>
                                             <span>{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <div className="mt-auto pt-8 border-t border-white/5">
-                                <div className="text-center mb-6">
-                                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Implantação</p>
-                                    <p className={cn("text-2xl font-bold mb-2", pkg.highlight ? "text-cyan-400" : "text-white")}>{pkg.price.setup}</p>
-                                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Mensalidade</p>
-                                    <p className={cn("text-3xl font-bold", pkg.highlight ? "text-cyan-400" : "text-white")}>{pkg.price.monthly}</p>
-                                </div>
-
+                            <div className="mt-auto">
                                 <Link
-                                    href="https://wa.me/5519991511101"
+                                    href={SITE_CONFIG.whatsapp}
                                     target="_blank"
                                     className={cn(
-                                        "w-full py-4 rounded-xl font-bold text-center transition-all duration-300 block",
+                                        "w-full py-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center gap-2",
                                         pkg.highlight
-                                            ? "bg-cyan-500 text-black hover:bg-cyan-400 hover:scale-105 shadow-lg shadow-cyan-500/20"
-                                            : "bg-white/10 text-white hover:bg-white/20 hover:scale-105"
+                                            ? "bg-blue-600 text-white hover:bg-blue-500 hover:scale-105 shadow-lg shadow-blue-600/20"
+                                            : "bg-white/5 text-white hover:bg-white/10 hover:scale-105 border border-white/10"
                                     )}
                                 >
                                     {pkg.cta}
