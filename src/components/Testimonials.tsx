@@ -5,57 +5,87 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "O Vinicius entregou um site absurdamente rápido. A conversão das nossas campanhas aumentou em 40% na primeira semana.",
+        quote: "A ROMEIRO.DEV transformou nossa presença digital. O site é incrivelmente rápido e o design é de outro mundo.",
         author: "Carlos Silva",
         role: "CEO, TechStart",
+        company: "TechStart"
     },
     {
-        quote: "A experiência de uso do sistema que ele desenvolveu é incrível. Tudo flui, nada trava. Realmente uma tecnologia antigravidade.",
-        author: "Ana Oliveira",
-        role: "Diretora de Operações, LogiFast",
+        quote: "Profissionalismo e qualidade técnica impecáveis. A automação que implementaram nos economiza horas todos os dias.",
+        author: "Ana Souza",
+        role: "Diretora de Operações",
+        company: "Logística Express"
     },
     {
-        quote: "Profissionalismo e qualidade técnica impecáveis. O design ficou moderno e exatamente como imaginávamos.",
-        author: "Ricardo Santos",
-        role: "Fundador, E-Shop Brasil",
+        quote: "O e-commerce ficou perfeito. Nossas vendas aumentaram 40% no primeiro mês após o lançamento.",
+        author: "Marcos Oliveira",
+        role: "Fundador",
+        company: "Moda Verde"
+    },
+    {
+        quote: "Design moderno e funcional. A equipe entendeu exatamente o que precisávamos.",
+        author: "Juliana Mendes",
+        role: "Marketing Manager",
+        company: "Creative Agency"
+    },
+    {
+        quote: "Suporte excepcional e entrega dentro do prazo. Recomendo fortemente.",
+        author: "Roberto Santos",
+        role: "CTO",
+        company: "Fintech Solutions"
     },
 ];
 
 export function Testimonials() {
     return (
-        <section id="testimonials" className="py-24 relative">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-6"
-                    >
-                        Quem já <span className="text-secondary">Elevou</span> seu Negócio Comigo.
-                    </motion.h2>
+        <section className="py-32 relative overflow-hidden bg-[#050505]">
+            <div className="container mx-auto px-4 mb-16 text-center">
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                    O que dizem nossos <span className="text-gradient-primary">Parceiros</span>
+                </h2>
+            </div>
+
+            <div className="relative flex overflow-x-hidden group">
+                <div className="animate-marquee whitespace-nowrap flex gap-8">
+                    {[...testimonials, ...testimonials].map((testimonial, index) => (
+                        <div
+                            key={index}
+                            className="w-[400px] glass-card-strong p-8 rounded-3xl flex-shrink-0 whitespace-normal"
+                        >
+                            <Quote className="w-10 h-10 text-primary/20 mb-6" />
+                            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                                &quot;{testimonial.quote}&quot;
+                            </p>
+                            <div>
+                                <p className="font-bold text-white">{testimonial.author}</p>
+                                <p className="text-sm text-gray-500">{testimonial.role}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {testimonials.map((item, index) => (
-                        <motion.div
+                <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex gap-8">
+                    {[...testimonials, ...testimonials].map((testimonial, index) => (
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="glass-panel p-8 rounded-2xl relative"
+                            className="w-[400px] glass-card-strong p-8 rounded-3xl flex-shrink-0 whitespace-normal"
                         >
-                            <Quote className="w-10 h-10 text-secondary/20 absolute top-6 left-6" />
-                            <p className="text-gray-300 mb-6 relative z-10 italic leading-relaxed">"{item.quote}"</p>
+                            <Quote className="w-10 h-10 text-primary/20 mb-6" />
+                            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                                &quot;{testimonial.quote}&quot;
+                            </p>
                             <div>
-                                <p className="font-bold text-white">{item.author}</p>
-                                <p className="text-sm text-gray-500">{item.role}</p>
+                                <p className="font-bold text-white">{testimonial.author}</p>
+                                <p className="text-sm text-gray-500">{testimonial.role}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
+
+            {/* Gradient Fade Edges */}
+            <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#050505] to-transparent z-10" />
+            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#050505] to-transparent z-10" />
         </section>
     );
 }

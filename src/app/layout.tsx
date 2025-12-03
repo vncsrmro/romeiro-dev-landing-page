@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  display: "swap",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   title: "ROMEIRO.DEV | Sistemas e Sites Antigravidade",
-  description: "Leveza, Velocidade e Conversão para o seu Negócio. Transformo ideias em experiências digitais que desafiam a gravidade.",
+  description: "Desenvolvimento de software de alta performance, sites modernos e sistemas web sob medida.",
 };
 
 export default function RootLayout({
@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="pt-BR" className="scroll-smooth">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans text-foreground antialiased",
-          inter.variable
+          "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-primary/30 selection:text-white",
+          fontSans.variable
         )}
       >
         {children}

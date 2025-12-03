@@ -3,38 +3,77 @@
 :root {
   --background: #030712;
   --foreground: #f9fafb;
-  
+
   /* Custom Colors */
   --color-primary: #3b82f6;
   --color-secondary: #a855f7;
   --color-accent: #14b8a6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-accent: var(--color-accent);
-  
-  --font-sans: var(--font-inter);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
-  overflow-x: hidden;
+@theme {
+  --font-sans: var(--font-sans);
+  --color-background: #030303;
+  --color-foreground: #ffffff;
+  --color-primary: #3b82f6;
+  /* Electric Blue */
+  --color-secondary: #a855f7;
+  /* Neon Purple */
+  --color-accent: #14b8a6;
+  /* Teal */
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   }
-  
+
   .glass-panel {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
+
+  .glass-card-strong {
+    @apply bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-all duration-300;
+  }
+
+  .text-gradient-bold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 25s linear infinite;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
 }

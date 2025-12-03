@@ -3,41 +3,52 @@
 import { motion } from "framer-motion";
 import { Rocket, Mail } from "lucide-react";
 import Link from "next/link";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function CTA() {
     return (
-        <section className="py-24 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/10 pointer-events-none" />
+        <section className="py-32 relative overflow-hidden flex items-center justify-center min-h-[80vh]">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-primary/10 pointer-events-none" />
+
+            {/* Animated Background Grid */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
 
             <div className="container mx-auto px-4 relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mx-auto glass-panel p-12 rounded-3xl border border-white/10"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="max-w-5xl mx-auto"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                        Pronto para Dar um <span className="text-primary">Salto de Qualidade</span>?
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tighter">
+                        Pronto para o <br />
+                        <span className="text-gradient-primary">Próximo Nível?</span>
                     </h2>
-                    <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                        Vamos transformar sua ideia em uma realidade digital antigravidade.
+
+                    <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        Não deixe sua ideia ser apenas mais uma. Vamos construir algo que desafie a gravidade e domine o mercado.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                         <Link
-                            href="https://wa.me/yournumber"
+                            href={SITE_CONFIG.whatsapp}
                             target="_blank"
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-primary/25"
+                            className="group relative w-full sm:w-auto px-10 py-5 rounded-full bg-white text-black font-bold text-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
                         >
-                            <Rocket className="w-5 h-5" />
-                            Fale Comigo no WhatsApp
+                            <span className="relative z-10 flex items-center gap-2">
+                                <Rocket className="w-6 h-6" />
+                                Iniciar Agora
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
+
                         <Link
-                            href="mailto:contato@romeiro.dev"
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-all hover:scale-105 flex items-center justify-center gap-2"
+                            href={SITE_CONFIG.email}
+                            className="w-full sm:w-auto px-10 py-5 rounded-full bg-white/5 border border-white/10 text-white font-bold text-xl hover:bg-white/10 transition-all hover:scale-105 flex items-center justify-center gap-3 backdrop-blur-sm"
                         >
-                            <Mail className="w-5 h-5" />
-                            Envie um Email
+                            <Mail className="w-6 h-6" />
+                            Fale por Email
                         </Link>
                     </div>
                 </motion.div>

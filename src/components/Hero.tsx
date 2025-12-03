@@ -1,75 +1,80 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Rocket } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
+    const { scrollY } = useScroll();
+    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
     return (
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-1000" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    style={{ y: y1, opacity }}
+                    className="flex flex-col items-center"
                 >
-                    <h2 className="text-xl md:text-2xl font-medium text-primary mb-4 tracking-wide uppercase">
-                        Sistemas e Sites Antigravidade
-                    </h2>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">
-                        ROMEIRO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">.DEV</span>
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
+                    >
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        <span className="text-sm font-medium text-gray-300">Disponível para novos projetos</span>
+                    </motion.div>
+
+                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-8 leading-[0.9]">
+                        <span className="block text-white">Engenharia de</span>
+                        <span className="block text-gradient-primary">Performance</span>
                     </h1>
-                    <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                        Leveza, Velocidade e Conversão para o seu Negócio. Transformo ideias em experiências digitais que desafiam a gravidade.
+
+                    <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                        Transformamos negócios ambiciosos em experiências digitais de <span className="text-white font-medium">alta conversão</span>.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                         <Link
-                            href="https://wa.me/yournumber"
+                            href={SITE_CONFIG.whatsapp}
                             target="_blank"
-                            className="px-8 py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center gap-2 shadow-lg shadow-primary/25"
+                            className="group relative px-8 py-4 rounded-full bg-white text-black font-bold text-lg hover:scale-105 transition-all duration-300 flex items-center gap-2 overflow-hidden"
                         >
-                            <Rocket className="w-5 h-5" />
-                            Impulsione seu Projeto
+                            <span className="relative z-10 flex items-center gap-2">
+                                Iniciar Projeto <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
                         <Link
                             href="#services"
                             className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-all hover:scale-105 flex items-center gap-2 backdrop-blur-sm"
                         >
-                            Ver Serviços
-                            <ArrowRight className="w-5 h-5" />
+                            Ver Soluções
                         </Link>
                     </div>
                 </motion.div>
 
-                {/* Floating Element */}
+                {/* Floating Element / Scroll Indicator */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="mt-16 md:mt-24"
+                    style={{ y: y2 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                    <motion.div
-                        animate={{ y: [0, -20, 0] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="relative w-full max-w-4xl mx-auto h-64 md:h-96 glass-panel rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 z-10" />
-                        <div className="grid grid-cols-3 gap-8 p-8 opacity-30">
-                            {[...Array(9)].map((_, i) => (
-                                <div key={i} className="h-32 bg-white/10 rounded-lg animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
-                            ))}
-                        </div>
-                        <div className="absolute z-20 text-center">
-                            <p className="text-2xl font-bold text-white/50">High Performance Zone</p>
-                        </div>
-                    </motion.div>
+                    <ChevronDown className="w-8 h-8 text-white/30" />
                 </motion.div>
             </div>
         </section>

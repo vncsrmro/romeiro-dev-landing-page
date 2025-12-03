@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Database, Globe, Layers, Layout, Server, Smartphone, Zap } from "lucide-react";
+import { Code2, Database, Globe, Layers, Layout, Server, Zap } from "lucide-react";
 
 const technologies = [
     { name: "Next.js", icon: Globe },

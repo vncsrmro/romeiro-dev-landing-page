@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function Footer() {
     return (
@@ -14,16 +15,16 @@ export function Footer() {
                     </div>
 
                     <div className="flex items-center gap-6">
-                        <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                        <Link href={SITE_CONFIG.links.github} target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                             <Github className="w-5 h-5" />
                         </Link>
-                        <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                        <Link href={SITE_CONFIG.links.linkedin} target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                             <Linkedin className="w-5 h-5" />
                         </Link>
-                        <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                        <Link href={SITE_CONFIG.links.twitter} target="_blank" className="text-gray-400 hover:text-primary transition-colors">
                             <Twitter className="w-5 h-5" />
                         </Link>
-                        <Link href="mailto:contato@romeiro.dev" className="text-gray-400 hover:text-primary transition-colors">
+                        <Link href={SITE_CONFIG.email} className="text-gray-400 hover:text-primary transition-colors">
                             <Mail className="w-5 h-5" />
                         </Link>
                     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Zap, Feather, Code2, ShieldCheck } from "lucide-react";
+import { Zap, Feather, Code2, ShieldCheck } from "lucide-react";
 
 const solutions = [
     {
